@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 吉伊卡哇北海道冬之旅❄️</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="day1.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--primary: #007aff;
+--text: #1d1d1f;
+--subtext: #86868b;
+--bg-gradient-start: #e0f2fe;
+--bg-gradient-end: #f0f9ff;
+--card-bg: rgba(255, 255, 255, 0.95);
+}
+
+body {
+font-family: 'Noto Sans TC', -apple-system, sans-serif;
+background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+color: var(--text);
+margin: 0;
+padding-bottom: 80px;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* 雪花特效 */
+#snow-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+.snowflake { position: absolute; top: -10px; color: white; font-size: 1em; opacity: 0.8; animation: fall linear infinite; text-shadow: 0 0 5px rgba(0,0,0,0.1); }
+@keyframes fall {
+0% { transform: translateY(-10vh) translateX(0px) rotate(0deg); opacity: 0.8; }
+100% { transform: translateY(105vh) translateX(20px) rotate(360deg); opacity: 0.3; }
+}
+
+/* Header */
+header {
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: blur(20px);
+padding: 20px 20px 10px;
+position: sticky;
+top: 0;
+z-index: 100;
+border-bottom: 1px solid rgba(0,0,0,0.05);
+text-align: center;
+}
+h1 { margin: 0; font-size: 1.4rem; color: #000; font-weight: 700; }
+.subtitle { font-size: 0.85rem; color: var(--subtext); margin-top: 4px; }
+
+/* Utility Bar */
+.utility-bar {
+display: flex;
+gap: 10px;
+padding: 10px 20px 15px;
+overflow-x: auto;
+white-space: nowrap;
+background: rgba(255,255,255,0.85);
+backdrop-filter: blur(20px);
+position: sticky;
+top: 75px;
+z-index: 99;
+}
+.chip {
+background: #fff;
+color: var(--primary);
+padding: 6px 14px;
+border-radius: 18px;
+font-size: 0.8rem;
+font-weight: 600;
+text-decoration: none;
+box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+border: 1px solid rgba(0,122,255,0.1);
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+/* Container */
+.container { max-width: 600px; margin: 0 auto; padding: 15px; position: relative; z-index: 10; }
+
+/* Day Card */
+.day-card {
+background: var(--card-bg);
+border-radius: 20px;
+margin-bottom: 25px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+overflow: hidden;
+border: 1px solid rgba(255,255,255,0.8);
+}
+.day-header {
+background: #f1f5f9;
+padding: 12px 20px;
+border-bottom: 1px solid rgba(0,0,0,0.05);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.day-date { font-weight: 700; color: #0f172a; font-size: 1.05rem; }
+.day-stay { font-size: 0.8rem; color: #64748b; background: #fff; padding: 2px 8px; border-radius: 6px; border: 1px solid #cbd5e1; }
+
+/* --- 新增：行程圖片樣式 --- */
+.day-img-container {
+width: 100%;
+border-bottom: 1px solid #f1f5f9;
+background-color: #fff;
+}
+.day-img {
+width: 100%;
+height: auto;
+display: block;
+}
+
+/* Timeline Items */
+.event-item {
+display: flex;
+padding: 15px 20px;
+border-bottom: 1px solid #f1f5f9;
+gap: 15px;
+align-items: flex-start;
+}
+.event-item:last-child { border-bottom: none; }
+
+.event-time {
+min-width: 45px;
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--primary);
+padding-top: 2px;
+font-feature-settings: "tnum";
+}
+.event-content { flex: 1; }
+
+.event-title {
+font-size: 1rem;
+font-weight: 700;
+color: #334155;
+margin-bottom: 4px;
+line-height: 1.4;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+}
+
+.event-desc {
+font-size: 0.9rem;
+color: #475569;
+margin-bottom: 8px;
+line-height: 1.6;
+}
+
+.event-meta {
+font-size: 0.8rem;
+color: #64748b;
+background: #f8fafc;
+padding: 4px 8px;
+border-radius: 6px;
+display: inline-block;
+margin-bottom: 5px;
+}
+
+/* --- 攻略補充方塊 --- */
+.box-info {
+background: #fff;
+border: 1px solid #e2e8f0;
+border-radius: 10px;
+padding: 10px;
+margin-top: 8px;
+font-size: 0.85rem;
+}
+
+.box-souvenir { background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; }
+.box-souvenir strong { display: block; margin-bottom: 4px; color: #9f1239; }
+
+.box-tip { background: #fff7ed; border: 1px solid #ffedd5; color: #c2410c; }
+.box-tip strong { display: block; margin-bottom: 4px; color: #9a3412; }
+
+.box-shop-list { list-style: none; padding: 0; margin: 0; }
+.box-shop-list li { position: relative; padding-left: 14px; margin-bottom: 4px; }
+.box-shop-list li::before { content: "•"; position: absolute; left: 0; color: inherit; }
+
+/* 📍 Map Icon */
+.map-link { text-decoration: none; font-size: 1.2rem; cursor: pointer; margin-left: 8px; transition: transform 0.2s; }
+.map-link:active { transform: scale(0.8); }
+
+/* Tags */
+.tag-alert { color: #dc2626; font-weight: bold; }
+
+/* Bus Table */
+.bus-table {
+width: 100%;
+font-size: 0.8rem;
+border-collapse: collapse;
+margin-top: 8px;
+background: #fff;
+border-radius: 8px;
+overflow: hidden;
+border: 1px solid #eee;
+}
+.bus-table th { background: #007aff; color: white; padding: 6px; text-align: center; font-weight: 600; }
+.bus-table td { border: 1px solid #eee; padding: 6px; text-align: center; color: #333; }
+.bus-table tr:nth-child(even) { background-color: #f8fafc; }
+
+footer { text-align: center; color: var(--subtext); font-size: 0.75rem; padding: 30px 20px; }
+</style>
+</head>
+<body>
+
+<div id="snow-container"></div>
+
+<header>
+<h1>2025 北海道冬之旅 ❄️</h1>
+<div class="subtitle">12/24 - 12/30</div>
+</header>
+
+<div class="utility-bar">
+<a href="https://www.google.com/maps/search/Toriton+Sushi" class="chip">🗺️ 壽司地圖</a>
+<a href="https://epark.jp/" class="chip">🍣 EPARK 訂位</a>
+<a href="https://www.jrhokkaido.co.jp/" class="chip">🚄 JR 北海道</a>
+</div>
+
+<div class="container">
+
+<div class="day-card">
+<div class="day-header"><span class="day-date">12/24 (三)</span><span class="day-stay">🏠 Solaria Nishitetsu</span></div>
+<div class="day-img-container"><img src="day1.png" alt="Day 1 行程圖" class="day-img"></div>
+<div class="event-item">
+<div class="event-time">06:20</div>
+<div class="event-content">
+<div class="event-title">TPE ✈️ 起飛</div>
+<div class="event-meta">虎航 IT234</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">10:55</div>
+<div class="event-content">
+<div class="event-title">抵達新千歲機場 (CTS)</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">13:00</div>
+<div class="event-content">
+<div class="event-title">機場購物 & 移動 <a href="https://maps.google.com/?q=新千歲機場" class="map-link">📍</a></div>
+<div class="event-desc">Uniqlo & GU 購買保暖衣物、手套、帽子。</div>
+<div class="event-meta">JR 快速機場線往札幌</div>
+<div class="box-info box-tip"><strong>⚠️ 穿搭提醒</strong>請在機場買好「簡易防滑鞋套」！</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">14:30</div>
+<div class="event-content">
+<div class="event-title">飯店 Check-in & 放行李 <a href="https://maps.google.com/?q=Solaria+Nishitetsu+Hotel+Sapporo" class="map-link">📍</a></div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">16:45</div>
+<div class="event-content">
+<div class="event-title">🦀 晚餐：薄野螃蟹吃到飽 <a href="https://maps.google.com/?q=薄野" class="map-link">📍</a></div>
+<div class="event-meta">步行 / 120分鐘方案</div>
+<div class="box-info box-tip"><strong>⚠️ 預約注意</strong>已預約，請務必準時抵達。</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">19:00</div>
+<div class="event-content">
+<div class="event-title">大通公園聖誕市集散策 <a href="https://maps.google.com/?q=大通公園" class="map-link">📍</a></div>
+<div class="box-info box-souvenir"><strong>🎁 市集必買</strong>慕尼黑聖誕市集限定馬克杯、熱紅酒。</div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-header"><span class="day-date">12/25 (四)</span><span class="day-stay">🏠 Solaria Nishitetsu</span></div>
+<div class="day-img-container"><img src="day2.png" alt="Day 2 行程圖" class="day-img"></div>
+<div class="event-item">
+<div class="event-time">09:45</div>
+<div class="event-content">
+<div class="event-title">JR 札幌 → 小樽</div>
+<div class="event-meta">坐右側賞海景</div>
+<div class="box-info box-tip"><strong>📸 Tips</strong>去程請坐「右側」車窗看海。</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">11:15</div>
+<div class="event-content">
+<div class="event-title">天狗山纜車 <a href="https://maps.google.com/?q=天狗山纜車" class="map-link">📍</a></div>
+<div class="event-meta">小樽巴士 / 需轉乘</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">14:00</div>
+<div class="event-content">
+<div class="event-title">小樽運河商店街巡禮 <a href="https://maps.google.com/?q=小樽運河" class="map-link">📍</a></div>
+<div class="event-desc">LeTAO、音樂盒堂、SNOOPY 茶屋、北菓樓、蒸汽鐘。</div>
+<div class="box-info box-souvenir">
+<strong>🎁 小樽推薦</strong>
+<ul class="box-shop-list">
+<li><strong>LeTAO：</strong>本店限定「現做雙層乳酪蛋糕」(需內用)。</li>
+<li><strong>北菓樓：</strong>「夢不思議泡芙」與「妖精之森年輪蛋糕」。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">17:30</div>
+<div class="event-content">
+<div class="event-title">Café BAAL 牛排飯 <a href="https://maps.google.com/?q=Cafe+BAAL+Otaru" class="map-link">📍</a></div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">19:00</div>
+<div class="event-content">
+<div class="event-title">JR 小樽 → 札幌站</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">20:00</div>
+<div class="event-content">
+<div class="event-title">回飯店休息、泡湯</div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-header"><span class="day-date">12/26 (五)</span><span class="day-stay">🏠 第一滝本館</span></div>
+<div class="day-img-container"><img src="day3.png" alt="Day 3 行程圖" class="day-img"></div>
+<div class="event-item">
+
+<div class="event-time">09:30</div>
+<div class="event-content">
+<div class="event-title tag-alert">⚠️ 札幌站寄放大行李</div>
+<div class="box-info box-tip"><strong>⚠️ 輕裝出發</strong>大行李鎖在札幌車站，只帶過夜包去登別。</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">10:00</div>
+<div class="event-content">
+<div class="event-title">JR 特急往登別站</div>
+<div class="event-meta">需轉乘道南巴士</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">12:00</div>
+<div class="event-content">
+<div class="event-title">午餐：味之大王 <a href="https://maps.google.com/?q=味之大王+登別" class="map-link">📍</a></div>
+<div class="event-desc">飯店 Check-in 寄放小包</div>
+<div class="box-info box-tip"><strong>⚠️ 只收現金</strong>請準備千元鈔。</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">13:30</div>
+<div class="event-content">
+<div class="event-title">登別地獄谷、奧之湯 <a href="https://maps.google.com/?q=登別地獄谷" class="map-link">📍</a></div>
+<div class="event-meta">步行</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">14:30</div>
+<div class="event-content">
+<div class="event-title">大湯沼川天然足湯</div>
+<div class="box-info box-tip"><strong>⚠️ 必備毛巾</strong>路面濕滑請小心。</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">18:30</div>
+<div class="event-content">
+<div class="event-title">飯店晚餐 & 泡湯</div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-header"><span class="day-date">12/27 (六)</span><span class="day-stay">🏠 Dormy Inn Annex</span></div>
+<div class="day-img-container"><img src="day4.png" alt="Day 4 行程圖" class="day-img"></div>
+<div class="event-item">
+
+<div class="event-time">10:00</div>
+<div class="event-content">
+<div class="event-title">巴士 → JR 登別站</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">12:15</div>
+<div class="event-content">
+<div class="event-title">抵達札幌站</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">12:30</div>
+<div class="event-content">
+<div class="event-title">午餐：Toriton 迴轉壽司 <a href="https://maps.google.com/?q=Toriton+Sapporo" class="map-link">📍</a></div>
+<div class="event-meta">領取寄放行李 / APP 候位</div>
+<div class="box-info box-tip"><strong>⚠️ 攻略</strong>用 EPARK App 提前抽號。</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">14:00</div>
+<div class="event-content">
+<div class="event-title">Dormy Inn Annex Check-in <a href="https://maps.google.com/?q=Dormy+Inn+Annex+Sapporo" class="map-link">📍</a></div>
+<div class="event-meta">步行 / Taxi</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">16:00</div>
+<div class="event-content">
+<div class="event-title">狸小路購物 🛍️ <a href="https://maps.google.com/?q=狸小路" class="map-link">📍</a></div>
+<div class="event-desc">
+Norbesa、PARCO 吉伊卡哇 shop、KINOTOYA BAKE、Donguri。
+</div>
+<div class="box-info box-souvenir">
+<strong>🎁 必逛推薦</strong>
+<ul class="box-shop-list">
+<li><strong>Norbesa：</strong>「駿河屋」(二手公仔)。</li>
+<li><strong>PARCO：</strong>吉伊卡哇 Shop (需整理券)。</li>
+<li><strong>Donguri：</strong>必買「竹輪麵包」(Chikuwa Pan)。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">19:00</div>
+<div class="event-content">
+<div class="event-title">晚餐：海味 Hachikyo <a href="https://maps.google.com/?q=海味Hachikyo" class="map-link">📍</a></div>
+<div class="event-meta">鮭魚卵蓋飯 (必預約)</div>
+<div class="box-info box-tip"><strong>⚠️ 體驗</strong>倒鮭魚卵時請勿碰碗，記得錄影！</div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-header"><span class="day-date">12/28 (日)</span><span class="day-stay">🏠 Dormy Inn Annex</span></div>
+<div class="day-img-container"><img src="day5.png" alt="Day 5 行程圖" class="day-img"></div>
+<div class="event-item">
+
+<div class="event-time">09:30</div>
+<div class="event-content">
+<div class="event-title">地鐵至真駒內站</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">10:30</div>
+<div class="event-content">
+<div class="event-title">頭大佛殿 (安藤忠雄) <a href="https://maps.google.com/?q=頭大佛" class="map-link">📍</a></div>
+<div class="event-meta">轉乘巴士或計程車</div>
+<div class="box-info box-tip">
+<strong>🚌 去程巴士 (真駒內站發)</strong>
+<table class="bus-table">
+<thead><tr><th>路線</th><th>真駒內站 2號月台</th><th>頭大佛</th></tr></thead>
+<tbody>
+<tr><td>中央 108</td><td>09:15</td><td>09:38</td></tr>
+<tr><td>中央 108</td><td>10:15</td><td>10:38</td></tr>
+<tr><td>中央 108</td><td>11:15</td><td>11:38</td></tr>
+</tbody>
+</table>
+<div style="margin-top:5px; font-size:0.75rem; color:#666;">* 冬季 [真106] 也可搭乘，但在瀧野峠下車需步行。</div>
+</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">13:00</div>
+<div class="event-content">
+<div class="event-title">瀧野鈴蘭公園 (玩雪) <a href="https://maps.google.com/?q=瀧野鈴蘭丘陵公園" class="map-link">📍</a></div>
+<div class="event-meta">玩雪輪</div>
+<div class="box-info box-tip"><strong>⚠️ 裝備</strong>玩雪輪請穿「防水褲」與手套。</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">15:30</div>
+<div class="event-content">
+<div class="event-title">回程巴士 (往真駒內)</div>
+<div class="event-meta">轉地鐵回市區</div>
+<table class="bus-table">
+<thead><tr><th>路線</th><th>公園東口 發</th><th>真駒內 著</th></tr></thead>
+<tbody>
+<tr><td>中央 106</td><td>14:28</td><td>14:59</td></tr>
+<tr><td>中央 106</td><td>15:28</td><td>15:59</td></tr>
+<tr><td>末班 106</td><td style="color:red; font-weight:bold;">16:28</td><td>16:59</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">16:30</div>
+<div class="event-content">
+<div class="event-title">藻岩山夜景 <a href="https://maps.google.com/?q=藻岩山" class="map-link">📍</a></div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">18:30</div>
+<div class="event-content">
+<div class="event-title">狸小路/薄野周邊晚餐</div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-header"><span class="day-date">12/29 (一)</span><span class="day-stay">🏠 千歲 JR INN</span></div>
+<div class="day-img-container"><img src="day6.png" alt="Day 6 行程圖" class="day-img"></div>
+<div class="event-item">
+
+<div class="event-time">08:50</div>
+<div class="event-content">
+<div class="event-title tag-alert">SNOW CHEESE 排隊 <a href="https://maps.google.com/?q=大丸札幌" class="map-link">📍</a></div>
+<div class="event-meta">大丸百貨 (務必提早到)</div>
+<div class="box-info box-souvenir">
+<strong>🎁 攻略</strong>
+大丸百貨 B1，建議 **08:30-09:00** 就去排。必買：「Snow White Cheese」。
+</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">10:30</div>
+<div class="event-content">
+<div class="event-title">札幌站周邊購物</div>
+<div class="event-desc">Stellar Place、COSME、APIA</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">17:00</div>
+<div class="event-content">
+<div class="event-title">JR 札幌 → 千歲站</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">18:30</div>
+<div class="event-content">
+<div class="event-title">晚餐：湯咖哩 GARAKU 千歲店 <a href="https://maps.google.com/?q=GARAKU+Chitose" class="map-link">📍</a></div>
+</div>
+</div>
+</div>
+
+<div class="day-card">
+<div class="day-header"><span class="day-date">12/30 (二)</span><span class="day-stay">🏠 Home</span></div>
+<div class="day-img-container"><img src="day7.png" alt="Day 7 行程圖" class="day-img"></div>
+<div class="event-item">
+
+<div class="event-time">07:40</div>
+<div class="event-content">
+<div class="event-title">飯店 Check-out</div>
+<div class="event-meta">JR 千歲站 → 機場</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">08:00</div>
+<div class="event-content">
+<div class="event-title tag-alert">🔥 機場掃貨攻略</div>
+<div class="event-desc">
+請直奔國內線航廈 2F 購買，買完再去國際線 3F 報到。
+</div>
+<div class="box-info box-souvenir">
+<strong>🏆 必買清單 (依優先順序)</strong>
+<ul class="box-shop-list">
+<li><strong>美瑛選果：</strong>玉米麵包 (08:00開門即搶)。</li>
+<li><strong>Kinotoya：</strong>現烤起司塔。</li>
+<li><strong>北菓樓：</strong>開拓米果。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">09:30</div>
+<div class="event-content">
+<div class="event-title">前往國際線 Check-in</div>
+<div class="event-meta">托運行李、過安檢</div>
+</div>
+</div>
+<div class="event-item">
+<div class="event-time">11:55</div>
+<div class="event-content">
+<div class="event-title">虎航 IT235 ✈️ 返回台灣</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer>
+© 2025 Hokkaido Winter Trip • 吉伊卡哇特別篇
+</footer>
+
+<script>
+function createSnowflakes() {
+const container = document.getElementById('snow-container');
+const snowflakeCount = 40;
+for (let i = 0; i < snowflakeCount; i++) {
+const snowflake = document.createElement('div');
+snowflake.classList.add('snowflake');
+snowflake.innerHTML = '❄';
+snowflake.style.left = Math.random() * 100 + 'vw';
+snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
+snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+snowflake.style.animationDelay = Math.random() * 5 + 's';
+container.appendChild(snowflake);
+}
+}
+createSnowflakes();
+</script>
+
+</body>
+</html>
