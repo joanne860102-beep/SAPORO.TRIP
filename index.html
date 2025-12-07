@@ -204,6 +204,28 @@ border: 1px solid #eee;
 .bus-table td { border: 1px solid #eee; padding: 6px; text-align: center; color: #333; }
 .bus-table tr:nth-child(even) { background-color: #f8fafc; }
 
+/* --- 交通資訊圖片樣式 --- */
+.transport-img {
+width: 100%;
+height: auto;
+border-radius: 10px;
+margin-bottom: 10px;
+display: block;
+border: 1px solid #eee;
+}
+.transport-title {
+font-size: 1.2rem;
+font-weight: 700;
+color: #007aff;
+margin: 30px 0 15px;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+}
+.transport-title::before, .transport-title::after { content: '🚆'; font-size: 1.2rem; }
+
 footer { text-align: center; color: var(--subtext); font-size: 0.75rem; padding: 30px 20px; }
 </style>
 </head>
@@ -573,6 +595,62 @@ Norbesa、PARCO 吉伊卡哇 shop、KINOTOYA BAKE、Donguri。
 <div class="event-title">虎航 IT235 ✈️ 返回台灣</div>
 </div>
 </div>
+</div>
+
+<div class="transport-title">交通攻略：JR PASS 與機場移動</div>
+
+<div class="day-card">
+    <div class="day-header">
+        <span class="day-date">🎫 札幌-登別區域鐵路周遊券</span>
+        <span class="day-stay">4日券</span>
+    </div>
+    <div class="event-item">
+        <div class="event-content">
+            <img src="jrpass.png" 
+                 alt="JR Pass 適用範圍圖" 
+                 class="transport-img"
+                 onerror="this.src='https://placehold.co/600x250/e0f2fe/007aff?text=請將JR+Pass圖片改名為+jrpass.png';">
+            
+            <div class="box-info box-tip">
+                <strong>推薦原因</strong>
+                您的行程涵蓋機場、札幌、小樽、登別。這張「4日券」CP值最高！
+                <ul>
+                    <li><strong>適用範圍：</strong>新千歲機場、札幌、小樽、登別。</li>
+                    <li><strong>適用車種：</strong>特急列車 (北斗/鈴蘭)、快速機場線 (Rapid Airport)、普通列車。</li>
+                    <li><strong>座位：</strong>可以劃位「指定席」喔！但特急北斗號和特急 Suzuran 號是全車指定席，一定要先劃位。</li>
+                </ul>
+            </div>
+
+            <div class="box-info box-tip" style="margin-top: 10px; border-color: #fcd34d; background-color: #fffbeb; color: #b45309;">
+                <strong>如何兌換 & 劃位</strong>
+                <ul>
+                    <li><strong>地點：</strong>新千歲機場 B1「JR 外籍旅客服務處」(08:30-19:00)。</li>
+                    <li><strong>劃位：</strong>兌換時直接請櫃檯幫忙劃好「Day 3 去登別」和「Day 4 回札幌」的特急座位。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="day-card">
+    <div class="day-header">
+        <span class="day-date">🚌 登別溫泉交通</span>
+        <span class="day-stay">轉乘攻略</span>
+    </div>
+    <div class="event-item">
+        <div class="event-content">
+            
+            <div class="box-info box-tip" style="border-color: #fecdd3; background-color: #fff1f2; color: #9f1239;">
+                <strong>⚠️ Pass 不能用！(注意)</strong>
+                JR PASS 只能搭火車到「登別站」。
+                從登別站到溫泉街/第一滝本館，必須轉乘<strong>「道南巴士 (Donan Bus)」</strong>。
+                <ul>
+                    <li><strong>費用：</strong>單程約 350 日圓 (請投幣或刷 IC 卡)。</li>
+                    <li><strong>時間：</strong>約 15 分鐘。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 </div>
